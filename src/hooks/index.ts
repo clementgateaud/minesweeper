@@ -5,7 +5,7 @@ import { AppContext } from "../contexts";
 export const useAppContext = (): AppContextType => {
   const context = useContext(AppContext);
   if (context === undefined) {
-    throw new Error("useAppContext must be used within a FormProvider");
+    throw new Error("useAppContext must be used within an AppProvider");
   }
   return context;
 };
