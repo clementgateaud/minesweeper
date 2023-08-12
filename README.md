@@ -2,7 +2,7 @@ ReactJS / Typescript / CSS Modules
 
 ## Try it out
 
-TO-DO: add prod link
+https://minesweeper-clement.vercel.app/
 
 ## Start project locally
 
