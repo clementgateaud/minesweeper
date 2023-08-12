@@ -62,8 +62,8 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
       ref={cellRef}
       onClick={() => handleCellClick(cell)}
       onContextMenu={(event) => handleCellRightClick(event, cell)}
-      onTouchStart={(event) => handleCellTouchStart(event)}
-      onTouchEnd={(event) => handleCellTouchEnd(event, cell)}
+      onTouchStart={() => handleCellTouchStart()}
+      onTouchEnd={() => handleCellTouchEnd(cell)}
     >
       {DISPLAY_STATUS.map((status) => {
         if (displayStatus === status.status) {
@@ -73,7 +73,7 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
               className={styles[status.status]}
               style={{
                 fontSize,
-                border: `${borderSize} solid white`,
+                borderWidth: `${borderSize}`,
               }}
             >
               {status.content}
