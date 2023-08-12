@@ -32,7 +32,7 @@ type AppContextType = {
     clickedCell: CellType
   ) => void;
   handleCellTouchStart: () => void;
-  handleCellTouchEnd: (clickedCell: CellType) => void;
+  handleCellTouchEnd: (event: React.TouchEvent, clickedCell: CellType) => void;
   isGameLost: boolean;
   setIsGameLost: React.Dispatch<React.SetStateAction<boolean>>;
   isGameWon: boolean;
@@ -134,9 +134,14 @@ export const AppProvider: FunctionComponent<PropsWithChildren> = ({
     setTouchStart(Date.now());
   };
 
-  const handleCellTouchEnd = (clickedCell: CellType) => {
+  const handleCellTouchEnd = (
+    event: React.TouchEvent,
+    clickedCell: CellType
+  ) => {
     const touchDuration = Date.now() - touchStart;
     if (touchDuration > 500) {
+      // Prevent the browser from translating the touch into a click
+      event.preventDefault();
       flagCell(clickedCell);
     }
     setTouchStart(0);
