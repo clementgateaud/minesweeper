@@ -1,0 +1,69 @@
+.main {
+  aspect-ratio: 1;
+}
+
+.main > * {
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.covered,
+.flagged,
+.mine {
+  background-color: rgb(220, 174, 162);
+}
+
+.mine_exploded {
+  background-color: rgb(253, 94, 94);
+}
+
+.zero {
+  background-color: rgb(235, 203, 194);
+}
+
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight {
+  background-color: rgb(235, 203, 194);
+}
+
+.one {
+  color: rgb(0, 0, 0, 0.45);
+}
+
+.two {
+  color: rgb(0, 0, 0, 0.6);
+}
+
+.three {
+  color: rgb(0, 0, 0, 0.75);
+}
+
+.four {
+  color: rgb(0, 0, 0, 0.8);
+}
+
+.five {
+  color: rgb(0, 0, 0, 0.85);
+}
+
+.six {
+  color: rgb(0, 0, 0, 0.9);
+}
+
+.seven {
+  color: rgb(0, 0, 0, 0.95);
+}
+
+.eight {
+  color: rgb(0, 0, 0, 1);
+}
