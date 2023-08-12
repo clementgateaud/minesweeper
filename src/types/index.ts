@@ -28,8 +28,7 @@ export type AppContextType = {
   setGrid: React.Dispatch<React.SetStateAction<GridType>>;
   setRowsNumber: React.Dispatch<React.SetStateAction<number>>;
   setColumnsNumber: React.Dispatch<React.SetStateAction<number>>;
-  minesPercentage: number;
-  setMinesPercentage: React.Dispatch<React.SetStateAction<number>>;
+  setMinesDensity: React.Dispatch<React.SetStateAction<number>>;
   handleCellClick: (clickedCell: CellType) => void;
   handleCellRightClick: (
     event: React.MouseEvent<Element, MouseEvent>,

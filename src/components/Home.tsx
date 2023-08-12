@@ -5,14 +5,14 @@ import { Grid } from "./Grid";
 import styles from "./Home.module.css";
 import { useAppContext } from "../hooks";
 import { generateGrid } from "../utils";
-import { DEFAULT_MINE_PERCENTAGE, DEFAULT_GRID_SIZE } from "../constants";
+import { DEFAULT_MINE_DENSITY, DEFAULT_GRID_SIZE } from "../constants";
 
 export const Home: FunctionComponent = () => {
   const {
     setGrid,
     setRowsNumber,
     setColumnsNumber,
-    setMinesPercentage,
+    setMinesDensity,
     isGameWon,
     setIsGameWon,
     isGameLost,
@@ -20,9 +20,8 @@ export const Home: FunctionComponent = () => {
   } = useAppContext();
 
   const [gridSizeInput, setGridSizeInput] = useState<number>(DEFAULT_GRID_SIZE);
-  const [minesPercentageInput, setMinesPercentageInput] = useState<number>(
-    DEFAULT_MINE_PERCENTAGE
-  );
+  const [minesDensityInput, setMinesDensityInput] =
+    useState<number>(DEFAULT_MINE_DENSITY);
 
   const handleGridSizeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -30,10 +29,10 @@ export const Home: FunctionComponent = () => {
     setGridSizeInput(parseInt(event.target.value, 10));
   };
 
-  const handleMinesPercentageChange = (
+  const handleMinesDensityChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setMinesPercentageInput(parseInt(event.target.value, 10));
+    setMinesDensityInput(parseInt(event.target.value, 10));
   };
 
   const handleStartGame = () => {
@@ -41,12 +40,12 @@ export const Home: FunctionComponent = () => {
       generateGrid(
         gridSizeInput / 10,
         gridSizeInput / 10,
-        minesPercentageInput / 100
+        minesDensityInput / 100
       )
     );
     setRowsNumber(gridSizeInput / 10);
     setColumnsNumber(gridSizeInput / 10);
-    setMinesPercentage(minesPercentageInput / 100);
+    setMinesDensity(minesDensityInput / 100);
     setIsGameWon(false);
     setIsGameLost(false);
   };
@@ -57,7 +56,7 @@ export const Home: FunctionComponent = () => {
         <h1>Minesweeper</h1>
         <div className={styles.gameSettings}>
           <div>
-            <label htmlFor="gridSize">Grid Size: </label>
+            <label htmlFor="gridSize">Grid size: </label>
             <select
               id="gridSize"
               onChange={(event) => handleGridSizeChange(event)}
@@ -76,11 +75,11 @@ export const Home: FunctionComponent = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="minesPercentage">Mines Percentage: </label>
+            <label htmlFor="minesDensity">Mines density: </label>
             <select
-              id="minesPercentage"
-              onChange={(event) => handleMinesPercentageChange(event)}
-              value={minesPercentageInput.toString()}
+              id="minesDensity"
+              onChange={(event) => handleMinesDensityChange(event)}
+              value={minesDensityInput.toString()}
             >
               <option value="5">5%</option>
               <option value="10">10%</option>

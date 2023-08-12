@@ -14,7 +14,7 @@ import {
   isGameWon as isGameWonUtil,
 } from "../utils";
 import { AppContext } from "../contexts";
-import { DEFAULT_MINE_PERCENTAGE, DEFAULT_GRID_SIZE } from "../constants";
+import { DEFAULT_MINE_DENSITY, DEFAULT_GRID_SIZE } from "../constants";
 
 export const AppProvider: FunctionComponent<PropsWithChildren> = ({
   children,
@@ -23,10 +23,10 @@ export const AppProvider: FunctionComponent<PropsWithChildren> = ({
   const [columnsNumber, setColumnsNumber] = useState<number>(
     DEFAULT_GRID_SIZE / 10
   );
-  const [minesPercentage, setMinesPercentage] = useState<number>(
-    DEFAULT_MINE_PERCENTAGE / 100
+  const [minesDensity, setMinesDensity] = useState<number>(
+    DEFAULT_MINE_DENSITY / 100
   );
-  const initialGrid = generateGrid(rowsNumber, columnsNumber, minesPercentage);
+  const initialGrid = generateGrid(rowsNumber, columnsNumber, minesDensity);
   const [grid, setGrid] = useState<GridType>(initialGrid);
   const [isGameLost, setIsGameLost] = useState(false);
   const [isGameWon, setIsGameWon] = useState(false);
@@ -121,8 +121,7 @@ export const AppProvider: FunctionComponent<PropsWithChildren> = ({
         setGrid,
         setRowsNumber,
         setColumnsNumber,
-        minesPercentage,
-        setMinesPercentage,
+        setMinesDensity,
         handleCellClick,
         handleCellRightClick,
         handleCellTouchStart,
