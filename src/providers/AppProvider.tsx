@@ -20,9 +20,7 @@ import { DEFAULT_MINE_PERCENTAGE, DEFAULT_GRID_SIZE } from "../constants";
 type AppContextType = {
   grid: GridType;
   setGrid: React.Dispatch<React.SetStateAction<GridType>>;
-  rowsNumber: number;
   setRowsNumber: React.Dispatch<React.SetStateAction<number>>;
-  columnsNumber: number;
   setColumnsNumber: React.Dispatch<React.SetStateAction<number>>;
   minesPercentage: number;
   setMinesPercentage: React.Dispatch<React.SetStateAction<number>>;
@@ -152,9 +150,7 @@ export const AppProvider: FunctionComponent<PropsWithChildren> = ({
       value={{
         grid,
         setGrid,
-        rowsNumber,
         setRowsNumber,
-        columnsNumber,
         setColumnsNumber,
         minesPercentage,
         setMinesPercentage,
