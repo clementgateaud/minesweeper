@@ -1,7 +1,7 @@
 import type { FunctionComponent } from "react";
 import { Cell } from "./Cell";
 import styles from "./Grid.module.css";
-import { useAppContext } from "../providers/AppProvider";
+import { useAppContext } from "../hooks";
 
 export const Grid: FunctionComponent = () => {
   const { grid } = useAppContext();

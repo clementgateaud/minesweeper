@@ -22,3 +22,23 @@ export type CellType = {
 };
 
 export type GridType = CellType[][];
+
+export type AppContextType = {
+  grid: GridType;
+  setGrid: React.Dispatch<React.SetStateAction<GridType>>;
+  setRowsNumber: React.Dispatch<React.SetStateAction<number>>;
+  setColumnsNumber: React.Dispatch<React.SetStateAction<number>>;
+  minesPercentage: number;
+  setMinesPercentage: React.Dispatch<React.SetStateAction<number>>;
+  handleCellClick: (clickedCell: CellType) => void;
+  handleCellRightClick: (
+    event: React.MouseEvent<Element, MouseEvent>,
+    clickedCell: CellType
+  ) => void;
+  handleCellTouchStart: () => void;
+  handleCellTouchEnd: (event: React.TouchEvent, clickedCell: CellType) => void;
+  isGameLost: boolean;
+  setIsGameLost: React.Dispatch<React.SetStateAction<boolean>>;
+  isGameWon: boolean;
+  setIsGameWon: React.Dispatch<React.SetStateAction<boolean>>;
+};

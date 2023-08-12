@@ -1,12 +1,10 @@
+import type { GridType, CellType } from "../types";
 import {
   FunctionComponent,
   PropsWithChildren,
   useEffect,
   useState,
-  createContext,
-  useContext,
 } from "react";
-import type { GridType, CellType } from "../types";
 import {
   generateGrid,
   getNumberOfAdjacentMines,
@@ -15,37 +13,8 @@ import {
   revealNumberOfAdjacentMines,
   isGameWon as isGameWonUtil,
 } from "../utils";
+import { AppContext } from "../contexts";
 import { DEFAULT_MINE_PERCENTAGE, DEFAULT_GRID_SIZE } from "../constants";
-
-type AppContextType = {
-  grid: GridType;
-  setGrid: React.Dispatch<React.SetStateAction<GridType>>;
-  setRowsNumber: React.Dispatch<React.SetStateAction<number>>;
-  setColumnsNumber: React.Dispatch<React.SetStateAction<number>>;
-  minesPercentage: number;
-  setMinesPercentage: React.Dispatch<React.SetStateAction<number>>;
-  handleCellClick: (clickedCell: CellType) => void;
-  handleCellRightClick: (
-    event: React.MouseEvent<Element, MouseEvent>,
-    clickedCell: CellType
-  ) => void;
-  handleCellTouchStart: () => void;
-  handleCellTouchEnd: (event: React.TouchEvent, clickedCell: CellType) => void;
-  isGameLost: boolean;
-  setIsGameLost: React.Dispatch<React.SetStateAction<boolean>>;
-  isGameWon: boolean;
-  setIsGameWon: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const AppContext = createContext<AppContextType | undefined>(undefined);
-
-export const useAppContext = (): AppContextType => {
-  const context = useContext(AppContext);
-  if (context === undefined) {
-    throw new Error("useAppContext must be used within a FormProvider");
-  }
-  return context;
-};
 
 export const AppProvider: FunctionComponent<PropsWithChildren> = ({
   children,

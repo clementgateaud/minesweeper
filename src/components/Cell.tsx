@@ -2,7 +2,7 @@ import type { FunctionComponent } from "react";
 import type { CellDisplayStatusType, CellType } from "../types";
 import { useRef, useState, useEffect } from "react";
 import styles from "./Cell.module.css";
-import { useAppContext } from "../providers/AppProvider";
+import { useAppContext } from "../hooks";
 
 type CellProps = {
   cell: CellType;

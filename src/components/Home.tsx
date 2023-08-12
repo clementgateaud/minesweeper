@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Container } from "./Container";
 import { Grid } from "./Grid";
 import styles from "./Home.module.css";
-import { useAppContext } from "../providers/AppProvider";
+import { useAppContext } from "../hooks";
 import { generateGrid } from "../utils";
 import { DEFAULT_MINE_PERCENTAGE, DEFAULT_GRID_SIZE } from "../constants";
 
