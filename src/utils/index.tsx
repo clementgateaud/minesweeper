@@ -245,3 +245,10 @@ export const isGameWon = (grid: GridType): boolean =>
       return cell.isMine || cell.displayStatus !== "covered";
     });
   });
+
+export const isGameLost = (grid: GridType): boolean =>
+  grid.some((row) => {
+    return row.some((cell) => {
+      return cell.isMine && cell.displayStatus === "mine_exploded";
+    });
+  });

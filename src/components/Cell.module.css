@@ -1,12 +1,8 @@
 .main {
   aspect-ratio: 1;
   user-select: none;
-}
-
-.main > * {
   box-sizing: border-box;
   width: 100%;
-  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,17 +18,18 @@
   transition: color 0s ease;
 }
 
+.mine_exploded {
+  animation: blinkAnimation 1s infinite;
+}
+
 .covered,
 .flagged,
 .mine {
   background-color: rgb(220, 174, 162);
 }
 
-.mine_exploded {
-  animation: blinkAnimation 1s infinite;
-}
-
 .covered {
+  /* for transition */
   color: transparent;
 }
 
@@ -49,31 +46,31 @@
 }
 
 .one {
-  color: rgb(0, 0, 0, 0.45);
+  color: rgb(0, 0, 0, 0.3);
 }
 
 .two {
-  color: rgb(0, 0, 0, 0.6);
+  color: rgb(0, 0, 0, 0.5);
 }
 
 .three {
-  color: rgb(0, 0, 0, 0.75);
+  color: rgb(0, 0, 0, 0.7);
 }
 
 .four {
-  color: rgb(0, 0, 0, 0.8);
-}
-
-.five {
-  color: rgb(0, 0, 0, 0.85);
-}
-
-.six {
   color: rgb(0, 0, 0, 0.9);
 }
 
-.seven {
+.five {
+  color: rgb(0, 0, 0, 0.925);
+}
+
+.six {
   color: rgb(0, 0, 0, 0.95);
+}
+
+.seven {
+  color: rgb(0, 0, 0, 0.975);
 }
 
 .eight {

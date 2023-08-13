@@ -4,20 +4,12 @@ import { Container } from "./Container";
 import { Grid } from "./Grid";
 import styles from "./Home.module.css";
 import { useAppContext } from "../hooks";
-import { generateGrid } from "../utils";
 import { DEFAULT_MINE_DENSITY, DEFAULT_GRID_SIZE } from "../constants";
+import { generateGrid } from "../utils";
 
 export const Home: FunctionComponent = () => {
-  const {
-    setGrid,
-    setRowsNumber,
-    setColumnsNumber,
-    setMinesDensity,
-    isGameWon,
-    setIsGameWon,
-    isGameLost,
-    setIsGameLost,
-  } = useAppContext();
+  const { isGameWon, setIsGameWon, isGameLost, setIsGameLost, setGrid } =
+    useAppContext();
 
   const [gridSizeInput, setGridSizeInput] = useState<number>(DEFAULT_GRID_SIZE);
   const [minesDensityInput, setMinesDensityInput] =
@@ -35,17 +27,8 @@ export const Home: FunctionComponent = () => {
     setMinesDensityInput(parseInt(event.target.value, 10));
   };
 
-  const handleStartGame = () => {
-    setGrid(
-      generateGrid(
-        gridSizeInput / 10,
-        gridSizeInput / 10,
-        minesDensityInput / 100
-      )
-    );
-    setRowsNumber(gridSizeInput / 10);
-    setColumnsNumber(gridSizeInput / 10);
-    setMinesDensity(minesDensityInput / 100);
+  const handleStartGame = (gridSize: number, minesDensity: number) => {
+    setGrid(generateGrid(gridSize / 10, gridSize / 10, minesDensity));
     setIsGameWon(false);
     setIsGameLost(false);
   };
@@ -81,28 +64,32 @@ export const Home: FunctionComponent = () => {
               onChange={(event) => handleMinesDensityChange(event)}
               value={minesDensityInput.toString()}
             >
-              <option value="5">5%</option>
-              <option value="10">10%</option>
-              <option value="15">15%</option>
-              <option value="20">20%</option>
-              <option value="25">25%</option>
-              <option value="30">30%</option>
-              <option value="35">35%</option>
-              <option value="40">40%</option>
-              <option value="45">45%</option>
-              <option value="50">50%</option>
-              <option value="55">55%</option>
-              <option value="60">60%</option>
-              <option value="65">65%</option>
-              <option value="70">70%</option>
-              <option value="75">75%</option>
-              <option value="80">80%</option>
-              <option value="85">85%</option>
-              <option value="90">90%</option>
-              <option value="95">95%</option>
+              <option value="0.05">5%</option>
+              <option value="0.10">10%</option>
+              <option value="0.15">15%</option>
+              <option value="0.20">20%</option>
+              <option value="0.25">25%</option>
+              <option value="0.30">30%</option>
+              <option value="0.35">35%</option>
+              <option value="0.40">40%</option>
+              <option value="0.45">45%</option>
+              <option value="0.50">50%</option>
+              <option value="0.55">55%</option>
+              <option value="0.60">60%</option>
+              <option value="0.65">65%</option>
+              <option value="0.70">70%</option>
+              <option value="0.75">75%</option>
+              <option value="0.80">80%</option>
+              <option value="0.85">85%</option>
+              <option value="0.90">90%</option>
+              <option value="0.95">95%</option>
             </select>
           </div>
-          <button onClick={handleStartGame}>Start new game</button>
+          <button
+            onClick={() => handleStartGame(gridSizeInput, minesDensityInput)}
+          >
+            Start new game
+          </button>
         </div>
         <Grid />
         <div className={styles.gameResult}>
