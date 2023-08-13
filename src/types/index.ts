@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 export type CellDisplayStatusType =
   | "covered"
   | "flagged"
@@ -25,9 +27,9 @@ export type GridType = CellType[][];
 
 export type AppContextType = {
   grid: GridType;
-  setGrid: React.Dispatch<React.SetStateAction<GridType>>;
+  setGrid: Dispatch<SetStateAction<GridType>>;
   isGameWon: boolean;
-  setIsGameWon: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsGameWon: Dispatch<SetStateAction<boolean>>;
   isGameLost: boolean;
-  setIsGameLost: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsGameLost: Dispatch<SetStateAction<boolean>>;
 };

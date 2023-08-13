@@ -1,5 +1,5 @@
-import type { FunctionComponent } from "react";
-import { useState } from "react";
+import type { FunctionComponent, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "./Container";
 import { Grid } from "./Grid";
 import styles from "./Home.module.css";
@@ -15,15 +15,19 @@ export const Home: FunctionComponent = () => {
   const [minesDensityInput, setMinesDensityInput] =
     useState<number>(DEFAULT_MINE_DENSITY);
 
-  const handleGridSizeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const [emojis, setEmojis] = useState<
+    {
+      id: string;
+      emoji: string;
+      leftPosition: number;
+    }[]
+  >([]);
+
+  const handleGridSizeChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setGridSizeInput(parseInt(event.target.value));
   };
 
-  const handleMinesDensityChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleMinesDensityChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setMinesDensityInput(parseFloat(event.target.value));
   };
 
@@ -32,6 +36,42 @@ export const Home: FunctionComponent = () => {
     setIsGameWon(false);
     setIsGameLost(false);
   };
+
+  let id = 1;
+  useEffect(() => {
+    // reset emoji elements from previous game
+    setEmojis([]);
+    if (!isGameWon && !isGameLost) {
+      return;
+    }
+    const emojis = isGameWon ? ["😍", "🎉"] : ["😭", "💩"];
+    const interval = setInterval(() => {
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const randomLeftPosition = Math.random() * window.innerWidth;
+
+      const newEmoji = {
+        id: id.toString(),
+        emoji: randomEmoji,
+        leftPosition: randomLeftPosition,
+      };
+
+      setEmojis((prevEmojis) => [...prevEmojis, newEmoji]);
+
+      // remove emoji after animation ends
+      setTimeout(() => {
+        setEmojis((prevEmojis) => {
+          return prevEmojis.filter((emoji) => emoji.id !== newEmoji.id);
+        });
+      }, 3000);
+
+      id++;
+    }, 30); // interval for new emoji
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isGameWon, isGameLost, id]);
 
   return (
     <Container className={styles.main}>
@@ -91,11 +131,20 @@ export const Home: FunctionComponent = () => {
             Start new game
           </button>
         </div>
+        {(isGameWon || isGameLost) && (
+          <>
+            {emojis.map((emoji) => (
+              <span
+                className={styles.emoji}
+                style={{ left: emoji.leftPosition }}
+                key={emoji.id}
+              >
+                {emoji.emoji}
+              </span>
+            ))}
+          </>
+        )}
         <Grid />
-        <div className={styles.gameResult}>
-          {isGameLost && <h2>You lost 💣</h2>}
-          {isGameWon && <h2>You won 🎉</h2>}
-        </div>
       </div>
     </Container>
   );

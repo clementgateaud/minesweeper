@@ -12,9 +12,18 @@
   margin-right: 20px;
 }
 
-.gameResult {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.emoji {
+  position: absolute;
+  font-size: 24px;
+  animation: rain 3s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes rain {
+  from {
+    top: -50px;
+  }
+  to {
+    top: 100vh;
+  }
 }

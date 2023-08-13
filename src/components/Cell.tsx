@@ -1,4 +1,4 @@
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, MouseEvent, TouchEvent } from "react";
 import type { CellDisplayStatusType, CellType } from "../types";
 import classNamesMaker from "classnames";
 import { useRef, useState, useEffect } from "react";
@@ -75,10 +75,7 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
     }
   };
 
-  const handleCellRightClick = (
-    event: React.MouseEvent<Element, MouseEvent>,
-    clickedCell: CellType
-  ) => {
+  const handleCellRightClick = (event: MouseEvent, clickedCell: CellType) => {
     event.preventDefault();
     flagCell(clickedCell);
   };
@@ -87,10 +84,7 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
     setTouchStart(Date.now());
   };
 
-  const handleCellTouchEnd = (
-    event: React.TouchEvent,
-    clickedCell: CellType
-  ) => {
+  const handleCellTouchEnd = (event: TouchEvent, clickedCell: CellType) => {
     const touchDuration = Date.now() - touchStart;
     if (touchDuration > 500) {
       // Prevent the browser from translating the touch into a click
@@ -115,13 +109,13 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
     return () => {
       window.removeEventListener("resize", adjustFontSize);
     };
-  }, []);
+  }, [grid]);
 
   const CELL_CONTENT: {
     [key in CellDisplayStatusType]: string;
   } = {
     covered: "",
-    flagged: "⛳️",
+    flagged: "🚩",
     mine: "💣",
     mine_exploded: "💣",
     zero: "",

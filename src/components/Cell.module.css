@@ -10,7 +10,6 @@
   border-color: white;
   transition: background-color 0.2s ease;
   transition: color 0.2s ease;
-  border-radius: 50% 20% / 10% 40%;
 }
 
 .mine,
