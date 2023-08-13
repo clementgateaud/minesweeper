@@ -10,6 +10,7 @@
   border-color: white;
   transition: background-color 0.2s ease;
   transition: color 0.2s ease;
+  border-radius: 50% 20% / 10% 40%;
 }
 
 .mine,
@@ -46,15 +47,15 @@
 }
 
 .one {
-  color: rgb(0, 0, 0, 0.3);
+  color: rgb(0, 0, 0, 0.4);
 }
 
 .two {
-  color: rgb(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0, 0.6);
 }
 
 .three {
-  color: rgb(0, 0, 0, 0.7);
+  color: rgb(0, 0, 0, 0.8);
 }
 
 .four {

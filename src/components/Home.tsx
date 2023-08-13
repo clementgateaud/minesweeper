@@ -18,13 +18,13 @@ export const Home: FunctionComponent = () => {
   const handleGridSizeChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setGridSizeInput(parseInt(event.target.value, 10));
+    setGridSizeInput(parseInt(event.target.value));
   };
 
   const handleMinesDensityChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setMinesDensityInput(parseInt(event.target.value, 10));
+    setMinesDensityInput(parseFloat(event.target.value));
   };
 
   const handleStartGame = (gridSize: number, minesDensity: number) => {
