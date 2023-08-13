@@ -1,3 +1,8 @@
+:root {
+  --color-dark-cell: rgb(220, 174, 162);
+  --color-light-cell: rgb(235, 203, 194);
+  --color-fail-cell: rgb(253, 94, 94);
+}
 * {
   margin: 0;
   padding: 0;
