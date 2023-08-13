@@ -17,14 +17,14 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
     handleCellTouchEnd,
   } = useAppContext();
   const [fontSize, setFontSize] = useState("16px");
-  const [borderSize, setBorderSize] = useState("1px");
+  const [borderWidth, setBorderWidth] = useState("1px");
   const cellRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const adjustFontSize = () => {
       if (cellRef.current) {
         setFontSize(`${cellRef.current.offsetWidth * 0.5}px`);
-        setBorderSize(`${cellRef.current.offsetWidth * 0.025}px`);
+        setBorderWidth(`${cellRef.current.offsetWidth * 0.025}px`);
       }
     };
 
@@ -37,24 +37,23 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
     };
   }, []);
 
-  const DISPLAY_STATUS: {
-    status: CellDisplayStatusType;
-    content: string;
-  }[] = [
-    { status: "covered", content: "" },
-    { status: "flagged", content: "🚩" },
-    { status: "mine", content: "💣" },
-    { status: "mine_exploded", content: "💣" },
-    { status: "zero", content: "" },
-    { status: "one", content: "1" },
-    { status: "two", content: "2" },
-    { status: "three", content: "3" },
-    { status: "four", content: "4" },
-    { status: "five", content: "5" },
-    { status: "six", content: "6" },
-    { status: "seven", content: "7" },
-    { status: "eight", content: "8" },
-  ];
+  const CELL_CONTENT: {
+    [key in CellDisplayStatusType]: string;
+  } = {
+    covered: "",
+    flagged: "🚩",
+    mine: "💣",
+    mine_exploded: "💣",
+    zero: "",
+    one: "1",
+    two: "2",
+    three: "3",
+    four: "4",
+    five: "5",
+    six: "6",
+    seven: "7",
+    eight: "8",
+  };
 
   return (
     <div
@@ -65,22 +64,15 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
       onTouchStart={() => handleCellTouchStart()}
       onTouchEnd={(event) => handleCellTouchEnd(event, cell)}
     >
-      {DISPLAY_STATUS.map((status) => {
-        if (displayStatus === status.status) {
-          return (
-            <div
-              key={status.status}
-              className={styles[status.status]}
-              style={{
-                fontSize,
-                borderWidth: `${borderSize}`,
-              }}
-            >
-              {status.content}
-            </div>
-          );
-        }
-      })}
+      <div
+        className={styles[displayStatus]}
+        style={{
+          fontSize,
+          borderWidth,
+        }}
+      >
+        {CELL_CONTENT[displayStatus]}
+      </div>
     </div>
   );
 };

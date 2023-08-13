@@ -106,8 +106,8 @@ export const Home: FunctionComponent = () => {
         </div>
         <Grid />
         <div className={styles.gameResult}>
-          {isGameLost && <h2>💣 You lost 💣</h2>}
-          {isGameWon && <h2>🎉 You won 🎉</h2>}
+          {isGameLost && <h2>You lost 💣</h2>}
+          {isGameWon && <h2>You won 🎉</h2>}
         </div>
       </div>
     </Container>

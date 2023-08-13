@@ -12,6 +12,14 @@
   justify-content: center;
   border-style: solid;
   border-color: white;
+  transition: background-color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+.mine,
+.mine_exploded {
+  transition: background-color 0s ease;
+  transition: color 0s ease;
 }
 
 .covered,
@@ -21,13 +29,14 @@
 }
 
 .mine_exploded {
-  background-color: rgb(253, 94, 94);
+  animation: blinkAnimation 1s infinite;
 }
 
-.zero {
-  background-color: rgb(235, 203, 194);
+.covered {
+  color: transparent;
 }
 
+.zero,
 .one,
 .two,
 .three,
@@ -69,4 +78,16 @@
 
 .eight {
   color: rgb(0, 0, 0, 1);
+}
+
+@keyframes blinkAnimation {
+  0% {
+    background-color: rgb(253, 94, 94);
+  }
+  50% {
+    background-color: rgb(220, 174, 162);
+  }
+  100% {
+    background-color: rgb(253, 94, 94);
+  }
 }
