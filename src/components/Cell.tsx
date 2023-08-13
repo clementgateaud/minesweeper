@@ -121,7 +121,7 @@ export const Cell: FunctionComponent<CellProps> = ({ cell }) => {
     [key in CellDisplayStatusType]: string;
   } = {
     covered: "",
-    flagged: "🚩",
+    flagged: "⛳️",
     mine: "💣",
     mine_exploded: "💣",
     zero: "",
