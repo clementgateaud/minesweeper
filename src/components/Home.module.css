@@ -4,12 +4,21 @@
 }
 
 .gameSettings {
-  display: flex;
   margin: 20px 0;
 }
 
-.gameSettings > *:not(:last-child) {
-  margin-right: 20px;
+.gameSettings select {
+  padding: 3px 1px;
+  min-width: 100px;
+  border-radius: 4px;
+}
+
+.gridSize {
+  margin-bottom: 10px;
+}
+
+.minesDensity {
+  margin-bottom: 15px;
 }
 
 .emoji {
@@ -20,11 +29,42 @@
   user-select: none;
 }
 
+.button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 16px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
 @keyframes rain {
   from {
     top: -50px;
   }
   to {
     top: 100vh;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  .gameSettings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .gameSettingsInput {
+    display: flex;
+  }
+
+  .gridSize,
+  .minesDensity {
+    margin-right: 20px;
+    margin-bottom: 0px;
   }
 }
