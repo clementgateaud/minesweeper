@@ -11,6 +11,9 @@
   padding: 3px 1px;
   min-width: 100px;
   border-radius: 4px;
+  color: black;
+  border: solid 1px black;
+  background-color: white;
 }
 
 .gridSize {
