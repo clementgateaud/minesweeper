@@ -1,6 +1,4 @@
 :root {
-  /* --color-dark-cell: rgba(170, 164, 226, 0.8);
-  --color-light-cell: rgba(170, 164, 226, 0.4); */
   --color-dark-cell: rgb(241, 207, 106);
   --color-light-cell: rgba(241, 207, 106, 0.4);
   --color-fail-cell: rgb(253, 94, 94);
@@ -9,4 +7,9 @@
   margin: 0;
   padding: 0;
   font-family: Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 32px;
 }
