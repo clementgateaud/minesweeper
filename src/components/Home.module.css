@@ -44,6 +44,10 @@
   cursor: pointer;
 }
 
+.gameTips {
+  margin-top: 20px;
+}
+
 @keyframes rain {
   from {
     top: -50px;

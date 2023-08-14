@@ -15,6 +15,14 @@ export const Home: FunctionComponent = () => {
   const [minesDensityInput, setMinesDensityInput] =
     useState<number>(DEFAULT_MINE_DENSITY);
 
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    if (window.navigator.maxTouchPoints > 0) {
+      setIsTouchDevice(true);
+    }
+  }, []);
+
   const [emojis, setEmojis] = useState<
     {
       id: string;
@@ -151,6 +159,12 @@ export const Home: FunctionComponent = () => {
           </>
         )}
         <Grid />
+        <p className={styles.gameTips}>
+          <strong>How to play?</strong>{" "}
+          {isTouchDevice
+            ? "Touch to uncover a cell, hold touch to flag a cell"
+            : "Left click to uncover a cell, right click to flag a cell"}
+        </p>
       </div>
     </Container>
   );
