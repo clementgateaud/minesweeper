@@ -48,7 +48,7 @@ export const Home: FunctionComponent = () => {
     const interval = setInterval(() => {
       const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-      const randomLeftPosition = Math.random() * window.innerWidth;
+      const randomLeftPosition = Math.random();
 
       const newEmoji = {
         id: id.toString(),
@@ -136,7 +136,10 @@ export const Home: FunctionComponent = () => {
             {emojis.map((emoji) => (
               <span
                 className={styles.emoji}
-                style={{ left: emoji.leftPosition }}
+                style={{
+                  // -12px so that an emoji can be half visible on left and right side
+                  left: `${emoji.leftPosition * window.innerWidth - 12}px`,
+                }}
                 key={emoji.id}
               >
                 {emoji.emoji}
